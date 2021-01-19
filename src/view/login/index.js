@@ -22,8 +22,9 @@ function Login(){
         .then(resultado => {
             dispatch({
                 type:'LOG_IN',
-                usuarioEmail:email
-                
+                payload:{
+                    usuarioEmail:email
+                }
             })
             setMsg("sucesso");
         }).catch(erro => {
