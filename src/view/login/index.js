@@ -1,10 +1,10 @@
 import React,{useState} from 'react';
 import './login.css';
 import logo from '../../assets/images/rick.png';
-
+import {useSelector, useDispatch} from 'react-redux';
 import firebase from '../../config/firebase'
 import 'firebase/auth'
-import { Link } from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 
 
 
@@ -13,13 +13,19 @@ function Login(){
     const [senha, setSenha] = useState('');
     const [msg, setMsg] = useState('');
 
+    const dispatch = useDispatch();
+
 
     function handleLogin() {
         firebase.auth()
         .signInWithEmailAndPassword(email,senha)
         .then(resultado => {
+            dispatch({
+                type:'LOG_IN',
+                usuarioEmail:email
+                
+            })
             setMsg("sucesso");
-            //console.log(resultado);
         }).catch(erro => {
             setMsg("erro");
         });
@@ -28,11 +34,12 @@ function Login(){
     return (
     
         <div className="login-content d-flex align-items-center text-center">
+            {useSelector(state => state.usuarioLogado) == 1 ? <Redirect to="/"></Redirect> : null}
             <form className="form-signin mx-auto">
                 <img className="mb-4" src={logo}  width="72" height="72" alt=""></img>
                 <h3 className="h3 mb-3 font-weight-bold text-white"> Login</h3>
 
-                <div class="mb-3">
+                <div className="mb-3">
                     <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="E-mail"
                         onChange={e => setEmail(e.target.value)}/>
                     <div id="emailHelp" className="form-text text-white">Não compartilhe seu E-mail com ninguém</div>
