@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import firebase from '../../config/firebase'
 import 'firebase/auth'
 import { Link, Redirect} from 'react-router-dom';
+import {NotificationManager} from 'react-notifications';
 
 
 
@@ -14,28 +15,39 @@ function Login(){
     const [msg, setMsg] = useState('');
 
     const dispatch = useDispatch();
+    const [showSpinner, setShowSpinner] = useState(false)
+
+    const Spinner = () => (
+        <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+        </div>
+    )
 
 
     function handleLogin() {
+        setShowSpinner(true)
+
         firebase.auth()
         .signInWithEmailAndPassword(email,senha)
         .then(resultado => {
+            NotificationManager.success('Você está logado!', 'Sucesso');
             dispatch({
                 type:'LOG_IN',
                 payload:{
                     usuarioEmail:email
                 }
             })
-            setMsg("sucesso");
+            
         }).catch(erro => {
-            setMsg("erro");
+            setShowSpinner(false)
+            NotificationManager.error('Verifique suas credenciais!', 'Erro')
         });
     }
 
     return (
     
         <div className="login-content d-flex align-items-center text-center">
-            {useSelector(state => state.usuarioLogado) == 1 ? <Redirect to="/"></Redirect> : null}
+            {useSelector(state => state.user.usuarioLogado) == 1 ? <Redirect to="/"></Redirect> : null}
             <form className="form-signin mx-auto">
                 <img className="mb-4" src={logo}  width="72" height="72" alt=""></img>
                 <h3 className="h3 mb-3 font-weight-bold text-white"> Login</h3>
@@ -60,7 +72,9 @@ function Login(){
                     <Link to ="#" className="mx-2">Recuperar senha</Link>
                     <Link to = "/novo-usuario" className="mx-2">Quero me cadastrar</Link>
                 </div>
+                { showSpinner ? <Spinner /> : null }
             </form>
+            
         </div>
     
     );

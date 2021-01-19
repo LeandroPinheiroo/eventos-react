@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import './usuario-novo.css';
 import 'react-notifications/lib/notifications.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { NotificationManager} from 'react-notifications';
 
 import firebase from '../../config/firebase'
 import 'firebase/auth'
@@ -52,7 +52,7 @@ function Login(){
         <div className="cadastro-content d-flex align-items-center text-center">
             <form className="form-signin mx-auto">
                 <h3 className="h3 mb-3 font-weight-bold text-white"> Cadastro de Usuário</h3>
-                <div class="mb-3">
+                <div className="mb-3">
                     <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="E-mail"
                         onChange={e => setEmail(e.target.value)}/>
                     <div id="emailHelp" className="form-text text-white">Não compartilhe seu E-mail com ninguém</div>
@@ -64,15 +64,15 @@ function Login(){
                 <div className="mb-3">
                     {
                         carregando ?
-                            <div class="spinner-border text-danger" role="status">
-                                <span class="sr-only"></span>
+                            <div className="spinner-border text-danger" role="status">
+                                <span className="sr-only"></span>
                             </div>
                         :
                             <button type="button" className="btn btn-lg btn-cadastro btn-block" onClick={handleNewUser}>Cadastrar</button>
                     }
                 </div>
             </form>
-            <NotificationContainer/>
+            
         </div>
     
     );
