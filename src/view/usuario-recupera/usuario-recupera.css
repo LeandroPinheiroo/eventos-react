@@ -1,0 +1,16 @@
+.btn-recupera{
+    width: 100%;
+    background-color: #614ea6;
+    color: #FFF;
+}
+
+.btn-recupera:hover{
+    background-color: #f21667;
+    color: #FFF;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    background-color: rebeccapurple;
+}

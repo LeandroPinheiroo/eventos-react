@@ -5,6 +5,7 @@ import Login from './view/login';
 import UsuarioNovo from './view/usuario-novo';
 import Home from './view/home';
 import {NotificationContainer} from 'react-notifications';
+import UsuarioRecupera from './view/usuario-recupera';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route exact path="/" component={Home}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/novo-usuario" component={UsuarioNovo}/>
+      <Route exact path="/recupera-usuario" component={UsuarioRecupera}/>
       <NotificationContainer/>
     </BrowserRouter>
   );

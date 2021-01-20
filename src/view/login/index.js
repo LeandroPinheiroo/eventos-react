@@ -69,7 +69,7 @@ function Login(){
                     { msg === "erro" &&<p>Ops! <strong>Verifique suas credenciais &#128148;</strong></p>}
                 </div>
                 <div className="opcoes-login text-white my-5">
-                    <Link to ="#" className="mx-2">Recuperar senha</Link>
+                    <Link to ="/recupera-usuario" className="mx-2">Recuperar senha</Link>
                     <Link to = "/novo-usuario" className="mx-2">Quero me cadastrar</Link>
                 </div>
                 { showSpinner ? <Spinner /> : null }
