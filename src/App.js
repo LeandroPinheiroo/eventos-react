@@ -6,6 +6,7 @@ import UsuarioNovo from './view/usuario-novo';
 import Home from './view/home';
 import {NotificationContainer} from 'react-notifications';
 import UsuarioRecupera from './view/usuario-recupera';
+import EventoCadastro from './view/evento-cadastro';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route exact path="/login" component={Login}/>
       <Route exact path="/novo-usuario" component={UsuarioNovo}/>
       <Route exact path="/recupera-usuario" component={UsuarioRecupera}/>
+      <Route exact path="/cadastra-evento" component={EventoCadastro} />  
       <NotificationContainer/>
     </BrowserRouter>
   );

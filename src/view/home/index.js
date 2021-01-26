@@ -5,6 +5,7 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 import firebase from '../../config/firebase'
 import 'firebase/auth'
 import NavBar from '../../components/nav-bar';
+import EventoCard from '../../components/Card';
 
 
 
@@ -14,6 +15,9 @@ function Home(){
     
         <div>
             <NavBar/>
+            <EventoCard></EventoCard>
+            <EventoCard></EventoCard>
+            <EventoCard></EventoCard>
         </div>
     
     );

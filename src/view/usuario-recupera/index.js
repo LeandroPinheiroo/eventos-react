@@ -20,7 +20,7 @@ function UsuarioRecupera(){
             NotificationManager.success('Link Enviado para o E-mail!', 'Sucesso');
             
         }).catch(erro => {
-            NotificationManager.error('E-mail não cadastrado!', 'Erro')
+            NotificationManager.error('E-mail não cadastrado!', 'Erro');
         });
 
     }
